@@ -11,6 +11,7 @@ help = {
         const stringText = `
 📖 **Available Commands**
 
+🔧 Utils:
 🔹 \`/currency <code>\`  
 Get current exchange rate(s) for one or more currency pairs.  
 _Example: \`/currency EURUSD\`, \`/currency EURUSD,USDJPY\`_
@@ -21,7 +22,7 @@ _Example: \`/weather Berlin\`_
 
 🔹 \`/password <length> <symbols> <numbers>\`  
 Generate a secure password based on your preferences.  
-_Example: \`/password length:12 symbols:true numbers:true\`_
+_Example: \`/password length: 12 symbols: true numbers: true\`_
 
 🔹 \`/help\`  
 Show this help message.
