@@ -1,11 +1,15 @@
 {
-  "name": "TypeBot",
+  "name": "typebot",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "dev": "nodemon --watch src -e ts --exec ts-node src/main.ts"
+    "dev": "nodemon --watch src -e ts --exec ts-node src/main.ts",
+    "deployCommands": "npx ts-node src/scripts/deployCommands.ts",
+    "deployAndStart": "npm run deployCommands && npm run start",
+    "clearGlobals": "npx ts-node src/scripts/clearGlobals.ts",
+    "clearDeployStart": "npm run clearGlobals && npm run deployAndStart"
   },
   "dependencies": {
     "discord.js": "^14.19.3",
