@@ -1,8 +1,3 @@
-Perfekt – du hast mit **TypeBot** bereits einen technisch klingenden, starken Namen gewählt.
-Wenn du **APIs einbinden willst** und **einen sinnvollen Nutzen für Discord-User bieten möchtest**, dann können wir TypeBot als **intelligenten Utility- & Info-Bot** aufbauen.
-
----
-
 ## 🧠 **Grundidee: TypeBot – dein vielseitiger API-Assistent auf Discord**
 
 > 💡 *Ein Bot, der APIs anzapft und auf Kommando sofort nützliche Informationen, Tools oder sogar Automatisierungen liefert.*
