@@ -7,12 +7,12 @@ export let weather: Command;
 weather = {
     data: new SlashCommandBuilder()
         .setName("weather")
-        .setDescription("Zeigt das aktuelle Wetter für eine Stadt")
+        .setDescription("Shows current weather for a City")
         .addStringOption(opt =>
-            opt.setName("stadt").setDescription("z. B. Berlin").setRequired(true)
+            opt.setName("city").setDescription("e.X. Berlin").setRequired(true)
         ),
     async execute(interaction) {
-        const city = interaction.options.getString("stadt", true);
+        const city: string = interaction.options.getString("city", true);
         try {
             const data: WeatherResponse = await getWeather(city);
 
@@ -20,10 +20,10 @@ weather = {
             const main = data.main;
 
             await interaction.reply(
-                `🌍 **${data.name}**\n🌡️ ${main.temp}°C, ${weather.description}\n💧 Luftfeuchtigkeit: ${main.humidity}%\n🌬️ Wind: ${data.wind.speed} m/s`
+                `🌍 **${data.name}**\n🌡️ ${main.temp}°C, ${weather.description}\n💧 Humidity: ${main.humidity}%\n🌬️ Wind: ${data.wind.speed} m/s`
             );
         } catch (err) {
-            await interaction.reply(`❌ Fehler: ${err instanceof Error ? err.message : "Unbekannter Fehler"}`);
+            await interaction.reply(`❌ Error: ${err instanceof Error ? err.message : "Unknown Error"}`);
         }
     },
 };
