@@ -1,7 +1,8 @@
 import { SlashCommandBuilder } from "discord.js";
 import { Command } from "../types/Command";
 
-export const say: Command = {
+export let say: Command;
+say = {
     data: new SlashCommandBuilder()
         .setName("say")
         .setDescription("You tell him what to say")
