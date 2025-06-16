@@ -4,16 +4,32 @@ import { Command } from "../types/Command";
 
 const commands = new Map<string, Command>();
 
-const files = fs.readdirSync(__dirname).filter(file => file.endsWith(".ts") || file.endsWith(".js"));
+// Gehe rekursiv durch alle Unterordner
+function loadCommands(dir: string) {
+    const files = fs.readdirSync(dir);
 
-for (const file of files) {
-    if (file === "index.ts") continue; // sich selbst ignorieren
+    for (const file of files) {
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
 
-    const { [file.replace(".ts", "")]: command } = require(`./${file}`) as Record<string, Command>;
+        if (stat.isDirectory()) {
+            loadCommands(fullPath); // rekursiv
+        } else if (file.endsWith(".ts") || file.endsWith(".js")) {
+            if (file === "index.ts" || file === "index.js") continue;
 
-    if (command && command.data && typeof command.execute === "function") {
-        commands.set(command.data.name, command);
+            const mod = require(fullPath) as Record<string, Command>;
+            const command: Command = mod.default || mod[Object.keys(mod)[0]];
+
+            if (command?.data?.name && typeof command.execute === "function") {
+                commands.set(command.data.name, command);
+            } else {
+                console.warn(`⚠️ Invalid command in ${fullPath}`);
+            }
+        }
     }
 }
+
+const baseDir = __dirname; // /commands
+loadCommands(baseDir);
 
 export default commands;

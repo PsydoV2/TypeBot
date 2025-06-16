@@ -1,5 +1,5 @@
 import {MessageFlagsBitField, PermissionsBitField, SlashCommandBuilder} from "discord.js";
-import {Command} from "../types/Command";
+import {Command} from "../../types/Command";
 
 export let kick: Command;
 kick = {

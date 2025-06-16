@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from "discord.js";
-import { Command } from "../types/Command";
-import { getWeather } from "../api/weatherApi";
-import {WeatherResponse} from "../types/WeatherResponse";
+import { Command } from "../../types/Command";
+import { getWeather } from "../../api/weatherApi";
+import {WeatherResponse} from "../../types/WeatherResponse";
 
 export let weather: Command;
 weather = {

@@ -1,5 +1,5 @@
 import {MessageFlagsBitField, SlashCommandBuilder} from "discord.js";
-import { Command } from "../types/Command";
+import { Command } from "../../types/Command";
 
 function generatePassword(length: number, useSymbols: boolean, useNumbers: boolean): string {
     const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
