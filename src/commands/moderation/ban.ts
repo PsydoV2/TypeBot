@@ -51,7 +51,7 @@ ban = {
                 reason: reason,
                 deleteMessageSeconds: secondsDelete
             })
-            await interaction.reply(`✅ **${targetUser.tag}** has been banned.`)
+            await interaction.reply(`✅ **${targetUser.tag}** has been banned.\n📝 Reason: *${reason}*`)
         } catch(error){
             await interaction.reply({
                 content: "❌ Something went wrong while trying to ban this user!",
