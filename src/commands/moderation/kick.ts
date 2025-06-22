@@ -1,5 +1,6 @@
 import {MessageFlagsBitField, PermissionsBitField, SlashCommandBuilder} from "discord.js";
 import {Command} from "../../types/Command";
+import {LogError} from "../../utils/LogHelper";
 
 export let kick: Command;
 kick = {
@@ -55,6 +56,7 @@ kick = {
                 content: "❌ Something went wrong while trying to kick this user.",
                 flags: MessageFlagsBitField.Flags.Ephemeral,
             })
+            LogError(error + "")
         }
     }
 }
