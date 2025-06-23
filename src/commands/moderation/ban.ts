@@ -1,5 +1,6 @@
 import {MessageFlagsBitField, SlashCommandBuilder} from "discord.js";
 import {Command} from "../../types/Command";
+import {LogError} from "../../utils/LogHelper";
 
 export let ban: Command;
 ban = {
@@ -57,6 +58,7 @@ ban = {
                 content: "❌ Something went wrong while trying to ban this user!",
                 flags: MessageFlagsBitField.Flags.Ephemeral,
             })
+            LogError(error + "")
         }
     }
 }

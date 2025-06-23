@@ -2,6 +2,7 @@ import { Command } from "../../types/Command";
 import {MessageFlagsBitField, MessageFlagsResolvable, SlashCommandBuilder} from "discord.js";
 import { getCurrentRate } from "../../api/currencyApi";
 import { CurrencyResponse } from "../../types/CurrencyResponse";
+import {LogError} from "../../utils/LogHelper";
 
 export let currency: Command;
 currency = {
@@ -36,12 +37,13 @@ currency = {
                 .join("\n");
 
             await interaction.reply(replyText);
-        } catch (err) {
+        } catch (error) {
             await interaction.reply({
-                content: `❌ Error while fetching rate: ${err instanceof Error ? err.message : "Unknown Error"}`,
+                content: `❌ Error while fetching rate: ${error instanceof Error ? error.message : "Unknown Error"}`,
                 flags: MessageFlagsBitField.Flags.Ephemeral,
 
             });
+            LogError(error + "")
         }
     }
 };

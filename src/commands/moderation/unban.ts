@@ -1,5 +1,6 @@
 import {MessageFlagsBitField, PermissionsBitField, SlashCommandBuilder} from "discord.js";
 import { Command } from "../../types/Command";
+import {LogError} from "../../utils/LogHelper";
 
 export let unban: Command;
 unban = {
@@ -25,6 +26,7 @@ unban = {
                 content: `❌ Failed to unban user with ID \`${userId}\`. Make sure the ID is correct and the user is banned.`,
                 flags: MessageFlagsBitField.Flags.Ephemeral
             });
+            LogError(error + "");
         }
     }
 };
