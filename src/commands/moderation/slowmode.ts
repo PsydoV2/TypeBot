@@ -1,8 +1,7 @@
 import {
     MessageFlagsBitField,
     PermissionsBitField,
-    SlashCommandBuilder, StageChannel,
-    TextChannel
+    SlashCommandBuilder, StageChannel
 } from "discord.js";
 import { Command } from "../../types/Command";
 import { LogError } from "../../utils/LogHelper";
