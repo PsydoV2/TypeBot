@@ -51,7 +51,7 @@ mute = {
         }
 
         try{
-            await  member.disableCommunicationUntil(duration, reason)
+            await  member.disableCommunicationUntil(new Date().getTime() + (duration * 1000), reason);
             await interaction.reply(`✅ **${user.tag}** has been muted for ${duration} seconds.\n📝 Reason: *${reason}*`)
         } catch (error) {
             await interaction.reply({
