@@ -2,15 +2,16 @@
   "name": "typebot",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/main.ts",
   "scripts": {
-    "start": "ts-node src/main.ts",
-    "dev": "nodemon --watch src -e ts --exec ts-node src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "ts-node src/main.ts",
     "deployCommandsLocal": "npx ts-node src/scripts/deployCommandsLocal.ts",
     "deployCommandsGlobal": "npx ts-node src/scripts/deployCommandsGlobal.ts",
     "clearCommandsGlobal": "npx ts-node src/scripts/clearGlobals.ts",
-    "startDev": "npm run deployCommandsLocal && npm run start",
-    "startLive": "npm run clearCommandsGlobal && npm run deployCommandsGlobal && npm run start"
+    "startDev": "npm run deployCommandsLocal && npm run dev",
+    "startLive": "npm run clearCommandsGlobal && npm run deployCommandsGlobal && npm run build && npm run start"
   },
   "dependencies": {
     "discord.js": "^14.19.3",
