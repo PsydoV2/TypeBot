@@ -1,4 +1,4 @@
-import {MessageFlagsBitField, SlashCommandBuilder} from "discord.js";
+import {MessageFlagsBitField, PermissionsBitField, SlashCommandBuilder} from "discord.js";
 import {Command} from "../../types/Command";
 import {LogError} from "../../utils/LogHelper";
 
@@ -9,7 +9,8 @@ ban = {
         .setDescription("Ban a User!")
         .addUserOption(option => option.setName("user").setDescription("The User u want to ban!").setRequired(true))
         .addStringOption(option => option.setName("reason").setDescription("The reason for the ban").setRequired(false))
-        .addIntegerOption(option => option.setName("minutes").setDescription("Amount of Minutes of which Messages from the banned User should be deleted").setRequired(false)),
+        .addIntegerOption(option => option.setName("minutes").setDescription("Amount of Minutes of which Messages from the banned User should be deleted").setRequired(false))
+        .setDefaultMemberPermissions(PermissionsBitField.Flags.BanMembers),
     async execute(interaction){
         const targetUser = interaction.options.getUser("user", true);
         const secondsDelete = (interaction.options.getInteger("minutes", false) || 0) * 60;

@@ -9,7 +9,8 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildModeration
     ],
 });
 
@@ -18,7 +19,7 @@ client.once(Events.ClientReady, () => {
     ready(client);
 });
 
-// Wird bei jeder Interaktion (z. B. Slash-Command) aufgerufen
+// Wird bei jeder Interaktion (z.B. Slash-Command) aufgerufen
 client.on(Events.InteractionCreate, async (interaction: Interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
