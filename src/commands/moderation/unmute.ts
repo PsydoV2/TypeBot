@@ -1,4 +1,4 @@
-import {MessageFlagsBitField, SlashCommandBuilder} from "discord.js";
+import {MessageFlagsBitField, PermissionsBitField, SlashCommandBuilder} from "discord.js";
 import {Command} from "../../types/Command";
 import {LogError} from "../../utils/LogHelper";
 
@@ -7,7 +7,8 @@ unmute = {
     data: new SlashCommandBuilder()
         .setName("unmute")
         .setDescription("Unmute a member")
-        .addUserOption(option => option.setName("user").setDescription("User to unmute").setRequired(true)),
+        .addUserOption(option => option.setName("user").setDescription("User to unmute").setRequired(true))
+        .setDefaultMemberPermissions(PermissionsBitField.Flags.MuteMembers),
     async execute(interaction)  {
         const user = interaction.options.getUser("user", true)
 
